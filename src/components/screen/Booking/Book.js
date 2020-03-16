@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     content: {
-        height: 450,
+        height: 462,
         backgroundColor: '#F8F8F8'
     },
     card: {
@@ -52,7 +52,7 @@ class BookList extends Component {
                     <TouchableOpacity style={{ margin: 10, backgroundColor: '#57DBE9', width: 136, height: 35, justifyContent: 'center', alignItems: 'center', borderRadius: 18 }}>
                         <Text style={{ color: 'white' }}>Book List</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ margin: 10, backgroundColor: 'white', width: 136, height: 35, justifyContent: 'center', alignItems: 'center', borderRadius: 18, borderWidth: 1, borderColor: '#57DBE9' }}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('History')} style={{ margin: 10, backgroundColor: 'white', width: 136, height: 35, justifyContent: 'center', alignItems: 'center', borderRadius: 18, borderWidth: 1, borderColor: '#57DBE9' }}>
                         <Text style={{ color: '#57DBE9' }}>History</Text>
                     </TouchableOpacity>
                 </View>
@@ -119,9 +119,9 @@ class BookList extends Component {
                     </ScrollView >
                 </View>
                 <View style={styles.footer}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}><Icon name="home" style={{ fontSize: 35, color: '#BDC0C6', marginHorizontal: 29 }} /></TouchableOpacity>
-                    <TouchableOpacity><Icon name="book" style={{ fontSize: 35, color: '#57DBE9', marginHorizontal: 29 }} /></TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('User')}><Icon name="person" style={{ fontSize: 35, color: '#BDC0C6', marginHorizontal: 29 }} /></TouchableOpacity>
+                    <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', marginHorizontal: 20 }} onPress={() => this.props.navigation.navigate('Home')}><Icon name="home" style={{ fontSize: 30,color: '#BDC0C6'}} /><Text style={{ fontSize: 10, marginTop: -5,color: '#BDC0C6' }}>Home</Text></TouchableOpacity>
+                    <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', marginHorizontal: 20 }} onPress={() => this.props.navigation.navigate('BookingList')}><Icon name="book" style={{ fontSize: 30,color: '#57DBE9'}} /><Text style={{ fontSize: 10, marginTop: -5,color: '#57DBE9' }}>Book</Text></TouchableOpacity>
+                    <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', marginHorizontal: 20 }} onPress={() => this.props.navigation.navigate('User')}><Icon name="person" style={{ fontSize: 30, color: '#BDC0C6' }} /><Text style={{ fontSize: 10, marginTop: -5,color: '#BDC0C6' }}>Account</Text></TouchableOpacity>
                 </View>
             </View>
         )

@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TextInput, Image, FlatList } from 'react-native
 import { Icon } from 'native-base';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 
-import { getAllHotell, getImages } from '../../redux/action/hotel';
+import { getAllHotell, searchHotel } from '../../redux/action/hotel';
 import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
@@ -59,6 +59,10 @@ const styles = StyleSheet.create({
 });
 
 class Home extends Component {
+    state = {
+        name: '',
+        city: ''
+    }
     renderRow = ({ item }) => {
         return (
             <View>
@@ -86,6 +90,20 @@ class Home extends Component {
     componentDidMount() {
         this.getAllHotell();
     }
+    sortHotelHadle(event) {
+        this.setState({
+            city: event
+        })
+        this.props.dispatch(searchHotel(this.state.name, this.state.city));
+    }
+
+    searchHotelHadle = async (event) => {
+        await this.setState({
+            name: event
+        })
+        console.log(this.props)
+        this.props.dispatch(searchHotel(this.state.name, this.state.city));
+    }
     convertToRupiah = (angka) => {
         var rupiah = ''
         var angkarev = angka.toString().split('').reverse().join('')
@@ -104,7 +122,7 @@ class Home extends Component {
                                 <View style={styles.search}>
                                     <Icon style={{ marginTop: 10, color: '#BDC0C6', position: 'absolute', paddingLeft: 15 }} name="search"></Icon>
                                     <View style={{ borderRadius: 25 }}>
-                                        <TextInput style={{ placeholderTextColor: '#BDC0C6', paddingLeft: 40 }} placeholder="Hotel Indonesia" />
+                                        <TextInput onChangeText={this.searchHotelHadle} style={{ placeholderTextColor: '#BDC0C6', paddingLeft: 40 }} placeholder="Hotel Indonesia" />
                                     </View>
                                 </View>
                                 <View style={styles.headerIcon}>
@@ -115,21 +133,11 @@ class Home extends Component {
                             </View>
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                                 <View style={styles.comp2Wrap}>
-                                    <TouchableOpacity style={{ marginRight: 8, width: 96, backgroundColor: '#B5207E', justifyContent: 'center', height: 37, borderRadius: 8, paddingLeft: 8 }}>
-                                        <Text style={{ color: 'white', fontSize: 15 }}>Jakarta</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginRight: 8, width: 96, backgroundColor: '#552190', justifyContent: 'center', height: 37, borderRadius: 8, paddingLeft: 8 }}>
-                                        <Text style={{ color: 'white', fontSize: 15 }}>Bogor</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginRight: 8, width: 96, backgroundColor: '#B5207E', justifyContent: 'center', height: 37, borderRadius: 8, paddingLeft: 8 }}>
-                                        <Text style={{ color: 'white', fontSize: 15 }}>Tanggerang</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginRight: 8, width: 96, backgroundColor: '#552190', justifyContent: 'center', height: 37, borderRadius: 8, paddingLeft: 8 }}>
-                                        <Text style={{ color: 'white', fontSize: 15 }}>Bekasi</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginRight: 8, width: 96, backgroundColor: '#B5207E', justifyContent: 'center', height: 37, borderRadius: 8, paddingLeft: 8 }}>
-                                        <Text style={{ color: 'white', fontSize: 15 }}>Putussibau</Text>
-                                    </TouchableOpacity>
+                                    {hotels.map(hotel => (
+                                        <TouchableOpacity onPress={()=>this.sortHotelHadle(`${hotel.city}`)} style={{ marginRight: 8, width: 96, backgroundColor: '#B5207E', justifyContent: 'center', height: 37, borderRadius: 8, paddingLeft: 8 }}>
+                                            <Text style={{ color: 'white', fontSize: 15 }}>{hotel.city}</Text>
+                                        </TouchableOpacity>
+                                    ))}
                                 </View>
                             </ScrollView>
                         </View>
@@ -145,9 +153,9 @@ class Home extends Component {
                         </ScrollView>
                     </View>
                     <View style={styles.footer}>
-                        <TouchableOpacity><Icon name="home" style={{ fontSize: 35, color: '#57DBE9', marginHorizontal: 29 }} /></TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('BookingList')}><Icon name="book" style={{ fontSize: 35, color: '#BDC0C6', marginHorizontal: 29 }} /></TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('User')}><Icon name="person" style={{ fontSize: 35, color: '#BDC0C6', marginHorizontal: 29 }} /></TouchableOpacity>
+                        <TouchableOpacity style={{justifyContent:'center',alignItems:'center',marginHorizontal:20}}><Icon name="home" style={{ fontSize: 30, color: '#57DBE9'}} /><Text style={{fontSize:10,marginTop:-5,color: '#57DBE9'}}>Home</Text></TouchableOpacity>
+                        <TouchableOpacity style={{justifyContent:'center',alignItems:'center',marginHorizontal:20}} onPress={() => this.props.navigation.navigate('BookingList')}><Icon name="book" style={{ fontSize: 30, color: '#BDC0C6'}} /><Text style={{fontSize:10,marginTop:-5,color:'#BDC0C6'}}>Book</Text></TouchableOpacity>
+                        <TouchableOpacity style={{justifyContent:'center',alignItems:'center',marginHorizontal:20}} onPress={() => this.props.navigation.navigate('User')}><Icon name="person" style={{ fontSize: 30, color: '#BDC0C6'}} /><Text style={{fontSize:10,marginTop:-5,color:'#BDC0C6'}}>Account</Text></TouchableOpacity>
                     </View>
                 </View>
             </View>
