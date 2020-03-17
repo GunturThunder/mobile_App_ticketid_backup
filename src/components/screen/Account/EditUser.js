@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     },
 })
 
-class User extends Component {
+class EditUser extends Component {
     render() {
         return (
             <View style={styles.wrap}>
@@ -37,7 +37,7 @@ class User extends Component {
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('BookingList')} style={{ marginBottom: 15 }}>
                             <Icon name="arrow-back" style={{ marginLeft: 20, marginTop: 20, color: '#75797C' }}></Icon>
                         </TouchableOpacity>
-                        <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1, marginLeft: -40 }}><Text style={{ fontSize: 20, color: '#75797C' }}>Profile</Text></View>
+                        <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1, marginLeft: -40 }}><Text style={{ fontSize: 20, color: '#75797C' }}>Edit Profile</Text></View>
                     </View>
                 </View>
                 <View style={styles.content}>
@@ -62,36 +62,6 @@ class User extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{ marginTop: 10, backgroundColor: 'white', height: 50, borderRadius: 10 }}>
-                        <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginHorizontal: 10, height: 50, alignItems: 'center' }}>
-                            <TouchableOpacity >
-                                <Text style={{ fontSize: 18 }}>Contact</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <Icon name="arrow-forward"></Icon>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                    <View style={{ marginTop: 10, backgroundColor: 'white', height: 50, borderRadius: 10 }}>
-                        <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginHorizontal: 10, height: 50, alignItems: 'center' }}>
-                            <TouchableOpacity >
-                                <Text style={{ fontSize: 18 }}>Term and condition</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <Icon name="arrow-forward"></Icon>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                    <View style={{ marginTop: 10, backgroundColor: 'white', height: 50, borderRadius: 10 }}>
-                        <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginHorizontal: 10, height: 50, alignItems: 'center' }}>
-                            <TouchableOpacity >
-                                <Text style={{ fontSize: 18 }}>Logut</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity >
-                                <Icon name="arrow-forward"></Icon>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
                 </View>
                 <View style={styles.footer}>
                     <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', marginHorizontal: 20 }} onPress={() => this.props.navigation.navigate('Home')}><Icon name="home" style={{ fontSize: 30,color: '#BDC0C6'}} /><Text style={{ fontSize: 10, marginTop: -5,color: '#BDC0C6'}}>Home</Text></TouchableOpacity>
@@ -103,4 +73,4 @@ class User extends Component {
     }
 }
 
-export default User;
+export default EditUser;

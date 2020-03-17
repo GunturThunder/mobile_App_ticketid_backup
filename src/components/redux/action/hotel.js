@@ -19,3 +19,13 @@ export const searchHotel = (name, city) => {
         })
     }
 }
+
+export const hotelDetail = (id) => {
+    return {
+        type: 'GET_HOTEL_DETAIL',
+        payload: axios({
+            method: "GET",
+            url: `http://192.168.1.39:8282/v1/hotel/${id}`,
+        })
+    }
+}

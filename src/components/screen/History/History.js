@@ -254,7 +254,7 @@ class History extends Component {
                             </View>
                         </View>
                     </ScrollView >
-                </View>
+                </View> 
                 <View style={styles.footer}>
                     <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', marginHorizontal: 20 }} onPress={() => this.props.navigation.navigate('Home')}><Icon name="home" style={{ fontSize: 30,color: '#BDC0C6'}} /><Text style={{ fontSize: 10, marginTop: -5,color: '#BDC0C6' }}>Home</Text></TouchableOpacity>
                     <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', marginHorizontal: 20 }} onPress={() => this.props.navigation.navigate('BookingList')}><Icon name="book" style={{ fontSize: 30,color: '#57DBE9'}} /><Text style={{ fontSize: 10, marginTop: -5,color: '#57DBE9' }}>Book</Text></TouchableOpacity>

@@ -80,7 +80,7 @@ class Home extends Component {
                 <Text style={{ color: '#75797C' }}>{this.convertToRupiah(item.hotel_price)}</Text>
                 <Text style={{ fontSize: 18 }}>{item.hotel_name}</Text>
                 <Text style={{ color: '#75797C' }}>{item.hotel_location}</Text>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('HotelDetail')} style={styles.buttonHotel}><Text style={{ color: '#477FDD' }}>Detail Hotel</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('HotelDetail',{id_hotel:item.id_hotel}) } style={styles.buttonHotel}><Text style={{ color: '#477FDD' }}>Detail Hotel</Text></TouchableOpacity>
             </View>
         )
     }
